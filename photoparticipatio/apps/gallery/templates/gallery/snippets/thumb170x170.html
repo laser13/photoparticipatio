@@ -1,0 +1,80 @@
+{% load thumbnail tagging_tags %}
+
+{% for photo in photos %}
+    <!-- thumb -->
+    <li class="span2">
+        <a class="thumbnail" href="{% url 'gallery_photo_show' photo.pk %}">
+            {% thumbnail photo.image '170x170' crop='center' as img %}
+                <img src="{{ img.url }}" alt="{{ photo.title }}">
+            {% endthumbnail %}
+        </a>
+        <div class="thumbnail-data">
+            <span class="btn btn-small likes"><i class="icon-heart"></i> {{ photo.cnt_like }}</span>
+            <span class="btn btn-small get-codes" data-toggle="modal" data-target="#get-codes" title="Коды для вставки"><i class="icon-picture"></i></span>
+        </div>
+{% endfor %}
+
+
+<div class="modal hide fade" id="get-codes">
+  <div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+    <h3>Коды для вставки</h3>
+  </div>
+  <div class="modal-body">
+    <div class="row">
+        <div class="control-group get-codes-thumbnail span2">
+          <img class="thumbnail" src="/media/cache/da/42/da42f3709337ef8f6b1d7069246d7b17.jpg" alt="#">
+          <label class="control-label" for="sel1"><small>Размер для кодов:</small></label>
+          <div class="controls">
+            <select id="sel1">
+                <option value="0" selected>640x480</option>
+                <option value="1">800x600</option>
+                <option value="2">1024x768</option>
+                <option value="3">1280x1024</option>
+                <option value="4">1920x1200</option>
+                <option value="5">оригинальный</option>
+            </select>
+          </div>
+        </div>
+        <div class="span3 offset2">
+            <label for="code1"><small>Ссылка (чтобы отправить по почте)</small></label>
+            <div class="input-prepend">
+              <button class="btn btn-primary"><i class="icon-share icon-white" title="Копировать код"></i></button>
+              <input type="text" class="span3" id="code1" value="http://tinypic.lan/91827389">
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="span3 offset2">
+            <label for="code2"><small>Прямая ссылка</small></label>
+            <div class="input-prepend">
+              <button class="btn btn-primary"><i class="icon-share icon-white" title="Копировать код"></i></button>
+              <input type="text" class="span3" id="code2" value="http://img1.tinypic.lan/i/91827389.png">
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="span3 offset2">
+            <label for="code3"><small>HTML (для сайтов и блогов)</small></label>
+            <div class="input-prepend">
+              <button class="btn btn-primary"><i class="icon-share icon-white" title="Копировать код"></i></button>
+              <input type="text" class="span3" id="code3" value="<a href='http://img1.tinypic.lan/91827389.png'>Картинка 91827389</a>">
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="span3 offset2">
+            <label for="code4"><small>BBCode (для форумов)</small></label>
+            <div class="input-prepend">
+              <button class="btn btn-primary"><i class="icon-share icon-white" title="Копировать код"></i></button>
+              <input type="text" class="span3" id="code4" value="[url=http://img1.tinypic.lan/91827389.png]Картинка 91827389[/url]">
+            </div>
+        </div>
+    </div>
+
+  </div>
+  <div class="modal-footer"></div>
+</div>

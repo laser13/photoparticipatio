@@ -1,0 +1,54 @@
+{% extends "base.html" %}
+{% load static wtf thumbnail %}
+
+{% block head_title %}{{ super }}{% endblock %}
+{% block head_keyworld %}{{ super }}{% endblock %}
+{% block head_description %}{{ super }}{% endblock %}
+{% block head_css %}{{ super }}{% endblock %}
+{% block head_js %}{{ super }}{% endblock %}
+{% block body_js %}
+    <script src="{% static "gallery/js/album_controls.js" %}"></script>
+    <script src="{% static "gallery/js/photo_controls.js" %}"></script>
+{% endblock %}
+
+{% block content %}
+    <h1>Фотографии по тегу "{{ tag.name }}"</h1>
+
+    <div style="font-size: 12px;">
+        <a href="{% url 'home' %}">&larr;&nbsp;в галерею</a>
+        {% if request.user.is_authenticated %}
+            &nbsp;|&nbsp;
+            <a href="{% url 'gallery_photo_add' %}">загрузить фотографию</a>
+        {% endif %}
+    </div>
+    <hr>
+    <br><br><br>
+    {% if photos|length > 0 %}
+        <table style="width: 70%; margin: 0 auto;">
+            <tr>
+                {% for photo in photos %}
+                    <td style="padding: 20px;">
+                        <div style="height: 100px; text-align: center;">
+                            <a href="{% url 'gallery_photo_show' photo.id %}">{% thumbnail photo.image '100x100' as img %}<img src="{{ img.url }}" width="{{ img.width }}" height="{{ img.height }}" alt="{{ photo.title }}">{% endthumbnail %}</a>
+                        </div>
+                        <div style="padding-top: 10px; text-align: center;">
+                            {{ photo.title }}
+                            {% if request.user.is_authenticated and photo.user == request.user %}
+                                <div style="font-size: 12px;">
+                                    <a href="{% url 'gallery_photo_edit' photo.id %}">редактировать</a>&nbsp;|&nbsp;
+                                    <a href="{% url 'gallery_photo_delete' photo.id %}" class="delete-photo-control">удалить</a>
+                                </div>
+                            {% endif %}
+                        </div>
+                    </td>
+                    {% if forloop.counter|divisibleby:'5' and forloop.counter < photos|length %}
+                        </tr><tr>
+                    {% endif %}
+                {% endfor %}
+            </tr>
+        </table>
+    {% else %}
+        <p>А альбоме нет фотографий.{% if request.user.is_authenticated and album.user == request.user %} <a href="{% url 'gallery_photo_add_to_album' album.id %}">Загрузить фотографии</a>{% endif %}</p>
+    {% endif %}
+    <br><br><br>
+{% endblock %}

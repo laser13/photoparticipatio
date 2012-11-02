@@ -1,0 +1,11 @@
+{% load tagging_tags %}
+
+{% tags_for_object photo as tags %}
+<ul class="tags">
+  <li><i class="icon-tags"></i>
+{% if tags|length > 0 %}
+    {% for tag in tags %}
+        <li><a href="{% url 'gallery_photo_show_by_tag' tag.id %}">{{ tag }}</a>{% if not forloop.last %}{% endif %}
+    {% endfor %}
+</ul>
+{% endif %}

@@ -1,0 +1,79 @@
+{% extends "gallery/base.html" %}
+{% load static %}
+
+{% block head_title %}{{ super }}{% endblock %}
+{% block head_keyworld %}{{ super }}{% endblock %}
+{% block head_description %}{{ super }}{% endblock %}
+{% block head_css %}{{ super }}{% endblock %}
+{% block head_js %}{{ super }}{% endblock %}
+{% block body_js %}<script src="{% static "gallery/js/album_controls.js" %}"></script>{% endblock %}
+
+{% block content %}
+    <div class="index-thumbs">
+        <div class="well">
+            <div class="btn-group">
+                <span class="btn btn-small active" title="По дате добавления"><i class="icon-calendar"></i></span>
+                <span class="btn btn-small" title="По числу просмотров"><i class="icon-eye-open"></i></span>
+            </div>
+            <div class="btn-group">
+                <span class="btn btn-small active toggle-grid" data-url="{% url 'gallery_index_thumb' '170x170' %}"><i class="icon-th"></i></span>
+                <span class="btn btn-small toggle-grid-detailed" data-url="{% url 'gallery_index_thumb' '570x350' %}"><i class="icon-th-large"></i></span>
+            </div>
+            <div class="btn-group">
+                <button class="btn btn-small dropdown-toggle" data-toggle="dropdown" title="Показывать на странице">
+                    12 превью
+                    <span class="caret"></span>
+                </button>
+                <ul class="dropdown-menu">
+                    <li><a href="#">24 превью</a>
+                    <li><a href="#">48 превью</a>
+                    <li><a href="#">96 превью</a>
+                    <li><a href="#">все изображения</a>
+                </ul>
+            </div>
+            {% if request.user.is_authenticated %}
+            <div class="user-controls">
+                <div class="btn-group">
+                    <a href="/gallery/photo/add" class="btn btn-primary btn-small">Загрузить картинку</a>
+                </div>
+                <div class="btn-group">
+                    <a class="btn dropdown-toggle btn-small" data-toggle="dropdown" href="#">
+                        Альбомы
+                        <span class="caret"></span>
+                    </a>
+                    <ul class="dropdown-menu pull-right">
+                        <li><a href="#">Альбом</a>
+                    </ul>
+                </div>
+                <div class="btn-group">
+                    <a class="btn dropdown-toggle btn-small" data-toggle="dropdown" href="#">
+                        Теги
+                        <span class="caret"></span>
+                    </a>
+                    <ul class="dropdown-menu pull-right">
+                        <li><a href="#">Мои теги</a>
+                        <li class="divider"></li>
+                        <li><a href="#">Общие теги</a>
+                    </ul>
+                </div>
+            </div>
+            {% endif %}
+        </div>
+        <ul id="id-thumbnails" class="thumbnails view-grid">
+           {% include "gallery/snippets/thumb170x170.html" %}
+        </ul>
+        <div class="well">
+            <div class="pagination pagination-centered">
+                <ul>
+                    <li class="disabled"><a href="#">Туда</a>
+                    <li class="active"><a href="#">1</a>
+                    <li><a href="#">2</a>
+                    <li><a href="#">3</a>
+                    <li><a href="#">4</a>
+                    <li><a href="#">Сюда</a>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

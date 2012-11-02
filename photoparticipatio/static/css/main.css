@@ -1,0 +1,324 @@
+
+[class^='icon-'], [class*=' icon-'] {
+  background-image: url('/static/img/glyphicons-halflings.png');
+}
+
+.icon-white, .nav-tabs > .active > a > [class^="icon-"], .nav-tabs > .active > a > [class*=" icon-"], .nav-pills > .active > a > [class^="icon-"], .nav-pills > .active > a > [class*=" icon-"], .nav-list > .active > a > [class^="icon-"], .nav-list > .active > a > [class*=" icon-"], .navbar-inverse .nav > .active > a > [class^="icon-"], .navbar-inverse .nav > .active > a > [class*=" icon-"], .dropdown-menu > li > a:hover > [class^="icon-"], .dropdown-menu > li > a:hover > [class*=" icon-"], .dropdown-menu > .active > a > [class^="icon-"], .dropdown-menu > .active > a > [class*=" icon-"] {
+  background-image: url('/static/img/glyphicons-halflings-white.png');
+}
+
+body {
+  padding-top: 40px;
+}
+
+body > .navbar-fixed-top .brand {
+  font-weight: bold;
+  color: #000;
+  text-shadow: 0 1px 0 rgba(255,255,255,.1),
+               0 0 30px rgba(255,255,255,.125);
+ -webkit-transition: all 0.2s linear;
+ -moz-transition: all 0.2s linear;
+  transition: all 0.2s linear;
+}
+
+@media (max-width: 980px) {
+  body {
+    padding-top: 0;
+  }
+  body > .navbar-fixed-top .brand {
+    float: left;
+    margin-left: 0;
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+  .user-panel .btn {
+    margin-right: 10px;
+  }
+}
+
+.bs-docs-sidenav {
+  width: 228px;
+  margin: 30px 0 0;
+  padding: 0;
+  background-color: #fff;
+  border-radius: 6px;
+  box-shadow: 0 1px 4px rgba(0,0,0,.065);
+}
+
+.bs-docs-sidenav > li > a {
+  display: block;
+  margin: 0 0 -1px;
+  padding: 8px 14px;
+  border: 1px solid #e5e5e5;
+}
+
+.bs-docs-sidenav > li:first-child > a {
+  border-radius: 6px 6px 0 0;
+}
+
+.bs-docs-sidenav > li:last-child > a {
+  border-radius: 0 0 6px 6px;
+}
+
+.bs-docs-sidenav > li:only-child > a {
+  border-radius: 6px;
+}
+
+
+.user-panel {
+  float: right;
+}
+
+.user-panel .label {
+  position: relative;
+  top: 4px;
+  margin-right: 5px;
+}
+
+
+.index-thumbs {
+  padding-top: 40px;
+  padding-bottom: 40px;
+}
+
+.index-thumbs h1 {
+  text-align: center;
+}
+
+.index-thumbs > .btn-group {
+  text-align: center;
+  margin-bottom: 10px;
+}
+
+
+.tags {
+  margin-left: 0;
+}
+
+.tags li {
+  display: inline-block;
+}
+
+.tags li:not(:last-child) {
+  margin-right: 5px;
+}
+
+
+.thumbnail-title {
+  white-space: nowrap;
+  overflow: hidden;
+  margin-right: 60px;
+ -o-text-overflow: ellipsis;
+ -ms-text-overflow: ellipsis;
+  text-overflow: ellipsis;
+}
+
+.thumbnails li {
+  position: relative;
+}
+
+.thumbnails .thumbnail {
+ -webkit-transition: box-shadow 0.2s ease, border-color 0.2s ease;
+ -moz-transition: box-shadow 0.2s ease, border-color 0.2s ease;
+ -o-transition: box-shadow 0.2s ease, border-color 0.2s ease;
+ -ms-transition: box-shadow 0.2s ease, border-color 0.2s ease;
+  transition: box-shadow 0.2s ease, border-color 0.2s ease;
+}
+
+.thumbnail-data {
+  position: absolute;
+  bottom: 5px;
+  left: 5px;
+  display: none;
+  background-color: rgba(255, 255, 255, 0.9);
+  opacity: 0;
+ -webkit-transition: opacity 0.2s ease;
+ -moz-transition: opacity 0.2s ease;
+ -o-transition: opacity 0.2s ease;
+ -ms-transition: opacity 0.2s ease;
+  transition: opacity 0.2s ease;
+  padding: 3px 20px 12px;
+ -webkit-box-sizing: border-box;
+ -moz-box-sizing: border-box;
+ -ms-box-sizing: border-box;
+  box-sizing: border-box;
+  width: 450px;
+}
+
+.thumbnails .span2 .thumbnail-data {
+  padding: 0;
+  top: 5px;
+  padding: 5px;
+  bottom: auto;
+  display: block;
+  opacity: 1;
+  background-color: transparent;
+  width: 130px;
+}
+
+.thumbnails .span2 .likes,
+.thumbnails .span2 .get-codes {
+  top: 4px;
+  right: 6px;
+  opacity: 0;
+ -webkit-transition: opacity 0.2s ease;
+ -moz-transition: opacity 0.2s ease;
+ -o-transition: opacity 0.2s ease;
+ -ms-transition: opacity 0.2s ease;
+  transition: opacity 0.2s ease;
+}
+
+.thumbnails .span2:hover .likes,
+.thumbnails .span2:hover .get-codes {
+  opacity: 1;
+}
+
+.thumbnails .span2 .album-info,
+.thumbnails .span2 .thumbnail-title,
+.thumbnails .span2 .tags {
+  display: none;
+}
+
+.thumbnails .span6 .thumbnail-data {
+  display: block;
+}
+
+.thumbnails .span6:hover .thumbnail-data {
+  display: block;
+  opacity: 1;
+}
+
+.thumbnails a.thumbnail.hover {
+  border-color: #08c;
+  box-shadow: 0 1px 4px rgba(0,105,214,0.25);
+}
+
+.album-info {
+  margin-bottom: 5px;
+}
+
+.album-info small {
+  display: block;
+}
+
+.thumbnails .span2 .thumbnail {
+  height: 140px;
+}
+
+
+.thumbnails {
+  margin-left: -11px;
+}
+
+
+@media (min-width: 1200px) {
+  .thumbnails .span2 .thumbnail {
+    height: 170px;
+  }
+
+  .thumbnails .span2 .thumbnail-data {
+    width: 160px;
+  }
+
+  .thumbnails .span6 .thumbnail {
+    height: 354px;
+  }
+
+  .thumbnails .span6 .thumbnail-data {
+    width: 560px;
+  }
+
+  .thumbnails {
+    margin-left: -15px;
+  }
+
+}
+
+@media (max-width: 979px) and (min-width: 768px) {
+  .thumbnails .span2 .thumbnail {
+    height: 104px;
+  }
+
+  .thumbnails .span6 .thumbnail-data {
+    padding: 0 12px 12px;
+    width: 342px;
+  }
+
+  .thumbnails .span2 .thumbnail-data {
+    width: 94px;
+  }
+
+}
+
+@media (max-width: 767px) {
+  .thumbnails .span2 .thumbnail {
+    height: auto;
+  }
+
+  .thumbnails .span2 .thumbnail-data {
+    width: auto;
+  }
+}
+
+
+.navbar-fixed-top {
+  box-shadow: 0 0 6px rgba(0, 0, 0, 0.8);
+}
+
+
+
+.error-msg:not(:last-child) {
+  margin-bottom: 4px;
+}
+
+
+.index-thumbs .btn-group {
+  display: inline-block;
+}
+
+
+.well-centered {
+  text-align: center;
+}
+
+.well .pagination {
+  margin: 0;
+  line-height: 1;
+}
+
+
+.user-controls {
+  float: right;
+}
+
+.get-codes-thumbnail {
+  position: absolute;
+}
+
+.get-codes-thumbnail select {
+  width: 170px;
+}
+
+.get-codes-thumbnail .thumbnail {
+  margin-bottom: 13px;
+  width: 160px;
+  height: 160px;
+}
+
+.image-wrap {
+  margin-bottom: 20px;
+  position: relative;
+}
+
+.image-likes {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+}
+
+.thumbnail {
+ -webkit-box-sizing: border-box;
+ -moz-box-sizing: border-box;
+ -ms-box-sizing: border-box;
+  box-sizing: border-box;
+}

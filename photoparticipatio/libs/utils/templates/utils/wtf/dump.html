@@ -1,0 +1,18 @@
+<div class="debug">
+
+    <h1><code>{{ class }}</code></h1>
+
+    <div><h3>Методы:</h3><pre>{{ methods }}</pre></div>
+    <div><h3>Unicode:</h3><pre>{{ object }}</pre></div>
+    <div><h3>Поля:</h3>
+
+    <table>
+    {% for attr in attribs %}
+        <tr><td><code>{{ attr.0 }}</code></td><td><pre>{{ attr.1 }}</pre></td></tr>
+    {% endfor %}
+    </table>
+    </div>
+
+    <div><h3>DIR():</h3><pre>{{ dir }}</pre></div>
+
+</div>

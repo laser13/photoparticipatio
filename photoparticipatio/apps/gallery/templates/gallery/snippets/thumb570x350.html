@@ -1,0 +1,26 @@
+{% load thumbnail tagging_tags %}
+
+{% for photo in photos %}
+    <!-- thumb -->
+    <li class="span6">
+        <a class="thumbnail" href="{% url 'gallery_photo_show' photo.pk %}">
+            {% thumbnail photo.image '570x350' crop='center' as img %}
+                <img src="{{ img.url }}" alt="{{ photo.title }}">
+            {% endthumbnail %}
+        </a>
+        <div class="thumbnail-data">
+            <h5 class="thumbnail-title">{{ photo.title }}</h5>
+            <div class="album-info">
+                <a href="{% url 'gallery_album_show' photo.album.pk %}">{{ photo.album.title }}</a>
+                <small>{{ photo.date_create }}</small>
+            </div>
+            <ul class="tags">
+                <li><i class="icon-tags"></i>
+                    {% tags_for_object photo as tag_list %}
+                    {% for tag in tag_list %}
+                        <li><a href="#">{{ tag }}</a>
+                    {% endfor %}
+            </ul>
+            <div class="likes"><span class="badge badge-inverse"><i class="icon-heart icon-white"></i> {{ photo.cnt_like }}</span></div>
+        </div>
+{% endfor %}

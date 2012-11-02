@@ -1,0 +1,54 @@
+{% extends "base.html" %}
+{% load static wtf photo_tags %}
+
+{% block head_title %}{{ super }}{% endblock %}
+{% block head_keyworld %}{{ super }}{% endblock %}
+{% block head_description %}{{ super }}{% endblock %}
+{% block head_css %}{{ super }}{% endblock %}
+{% block head_js %}{{ super }}{% endblock %}
+{% block body_js %}<script src="{% static "gallery/js/photo_controls.js" %}"></script>{% endblock %}
+
+{% block content %}
+    <div class="page-header">
+        <h1>{{ photo.title }}</h1>
+    </div>
+    <div class="well">
+    <div class="btn-group">
+        <a href="{% url 'home' %}" class="btn btn-inverse btn-small">Назад</a>
+    </div>
+        <!-- <div>Прямая ссылка на эту фотографию: <a href="{% url 'gallery_photo_show_secret' photo.album.secret photo.id %}">http://{{ request.META.HTTP_HOST }}{% url 'gallery_photo_show_secret' photo.album.secret photo.id %}</a></div> -->
+        {% if request.user.is_authenticated %}
+        <div class="btn-group">
+            <a href="{% url 'gallery_album_show' photo.album.id %}" class="btn btn-small">К альбому</a>
+        </div>
+        {% if photo.user == request.user %}
+        <div class="btn-group">
+            <a href="{% url 'gallery_photo_add_to_album' photo.album.id %}" class="btn btn-small btn-primary">Загрузить картинку</a>
+        </div>
+        <div class="btn-group">
+            <a href="{% url 'gallery_photo_edit' photo.id %}" class="btn btn-small">Редактировать</a>
+            <a href="{% url 'gallery_photo_delete' photo.id %}" class="btn btn-small btn-danger delete-photo-control">Удалить</a>
+        </div>
+        {% endif %}
+        {% endif %}
+        {% if request.user.is_authenticated and photo.user == request.user %}
+        <div class="btn-group">
+            <a href="{% url 'gallery_photo_transform' photo.id photo.ROTATE_FORWARD %}" class=" btn btn-small rotate-forward-control" title="Поворот по часовой"><i class="icon-chevron-right"></i></a>
+            <a href="{% url 'gallery_photo_transform' photo.id photo.ROTATE_BACKWARD %}" class=" btn btn-small rotate-backward-control" title="Поворот против часовой"><i class="icon-chevron-left"></i></a>
+            <a href="{% url 'gallery_photo_transform' photo.id photo.FLIP_HORISONTAL %}" class=" btn btn-small flip-horisontal-control" title="Отражение по горизонтали"><i class="icon-resize-horizontal"></i></a>
+            <a href="{% url 'gallery_photo_transform' photo.id photo.FLIP_VERTICAL %}" class=" btn btn-small flip-vertical-control" title="Отражение по вертикали"><i class=" icon-resize-vertical"></i></a>
+        </div>
+        {% endif %}
+    </div>
+    <div class="image-wrap">
+        <span class="label label-inverse image-likes"><i class="icon-heart icon-white"></i> {{ photo.cnt_like }}</span>
+        {{ photo|safe }}
+    </div>
+
+    <div class="image-data well">
+        <p>Картинку добавил <b>{{ photo.user }}</b>, {{ photo.date_create }}</p>
+        {% if request.user.is_authenticated %}
+            {% photo_tags photo %}
+        {% endif %}
+    </div>
+{% endblock %}
